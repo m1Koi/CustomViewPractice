@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ProgressView">
+        <attr name="trackColor" format="color" />
+        <attr name="trackWidth" format="dimension" />
+        <attr name="progressColor" format="color" />
+        <attr name="progressTextColor" format="color" />
+        <attr name="progressTextSize" format="dimension" />
+    </declare-styleable>
+</resources>
