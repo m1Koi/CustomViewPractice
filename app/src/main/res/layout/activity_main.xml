@@ -13,7 +13,7 @@
         android:layout_gravity="center"
         app:progressColor="@color/colorAccent"
         app:progressTextColor="@color/colorPrimaryDark"
-        app:progressTextSize="18sp"
+        app:progressTextSize="30sp"
         app:trackColor="@color/colorPrimary"
         app:trackWidth="18dp" />
 </FrameLayout>

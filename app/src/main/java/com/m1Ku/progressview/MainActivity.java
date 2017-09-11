@@ -12,6 +12,6 @@ public class MainActivity extends AppCompatActivity {
 
         ProgressView progressView = (ProgressView) findViewById(R.id.progressView);
         progressView.setMaxProgress(4000);
-        progressView.setCurrentProgress(2657);
+        progressView.setCurrentProgress(2855);
     }
 }

@@ -48,7 +48,7 @@ public class ProgressView extends View {
         mTrackWidth = ta.getDimensionPixelOffset(R.styleable.ProgressView_trackWidth, Utils.dp2px(context, mTrackWidth));
         mProgressColor = ta.getColor(R.styleable.ProgressView_progressColor, mProgressColor);
         mProgressTextColor = ta.getColor(R.styleable.ProgressView_progressTextColor, mProgressTextColor);
-        mProgressTextSize = ta.getDimensionPixelOffset(R.styleable.ProgressView_progressTextSize,Utils.dp2px(context,mProgressTextSize));
+        mProgressTextSize = ta.getDimensionPixelOffset(R.styleable.ProgressView_progressTextSize, Utils.dp2px(context, mProgressTextSize));
 
         ta.recycle();
 
@@ -111,15 +111,15 @@ public class ProgressView extends View {
         canvas.drawArc(rectF, 135, sweepAngle, false, mProgressPaint);
 
         //画文字
-        String text = (int)mCurrentProgress + "";
+        String text = (int) mCurrentProgress + "";
         Rect rect = new Rect();
         mTextPaint.getTextBounds(text, 0, text.length(), rect);
 
         Paint.FontMetricsInt fontMetrics = mTextPaint.getFontMetricsInt();
         float x = center - rect.width() / 2;
         //画文字
-        float dy = (fontMetrics.bottom - fontMetrics.top)/2 - fontMetrics.bottom;
-        float baseline = getHeight() / 2 + dy;
+        float dy = fontMetrics.ascent / 2;
+        float baseline = getHeight() / 2 - dy;
         canvas.drawText(text, 0, text.length(), x, baseline, mTextPaint);
     }
 
