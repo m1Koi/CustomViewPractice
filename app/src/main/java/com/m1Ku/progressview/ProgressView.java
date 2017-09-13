@@ -61,12 +61,14 @@ public class ProgressView extends View {
         //轨道画笔
         mTrackPaint = new Paint();
         mTrackPaint.setColor(mTrackColor);
+        mTrackPaint.setAntiAlias(true);
         mTrackPaint.setStrokeWidth(mTrackWidth);
         mTrackPaint.setStyle(Paint.Style.STROKE);
         mTrackPaint.setStrokeCap(Paint.Cap.ROUND);
         //进度条画笔
         mProgressPaint = new Paint();
         mProgressPaint.setColor(mProgressColor);
+        mProgressPaint.setAntiAlias(true);
         mProgressPaint.setStrokeWidth(mTrackWidth);
         mProgressPaint.setStyle(Paint.Style.STROKE);
         mProgressPaint.setStrokeCap(Paint.Cap.ROUND);
@@ -74,6 +76,7 @@ public class ProgressView extends View {
         mTextPaint = new Paint();
         mTextPaint.setTextSize(mProgressTextSize);
         mTextPaint.setColor(mProgressTextColor);
+        mTextPaint.setAntiAlias(true);
 
     }
 
@@ -98,7 +101,9 @@ public class ProgressView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+        //控件中心位置
         int center = getWidth() / 2;
+        //轨道圆弧半径
         int radius = getWidth() / 2 - mTrackWidth / 2;
 
         //画轨道
@@ -106,7 +111,6 @@ public class ProgressView extends View {
         canvas.drawArc(rectF, 135, 270, false, mTrackPaint);
 
         //画进度条
-        if (mCurrentProgress == 0) return;
         float sweepAngle = (mCurrentProgress / mMaxProgress) * 270;
         canvas.drawArc(rectF, 135, sweepAngle, false, mProgressPaint);
 
@@ -117,12 +121,16 @@ public class ProgressView extends View {
 
         Paint.FontMetricsInt fontMetrics = mTextPaint.getFontMetricsInt();
         float x = center - rect.width() / 2;
-        //画文字
-        float dy = fontMetrics.ascent / 2;
-        float baseline = getHeight() / 2 - dy;
+//        float dy = fontMetrics.ascent / 2;
+        float dy = (fontMetrics.bottom - fontMetrics.top)/2 - fontMetrics.bottom;
+        float baseline = getHeight() / 2 + dy; //确定文字绘制的基线高度
         canvas.drawText(text, 0, text.length(), x, baseline, mTextPaint);
     }
 
+    /**
+     * 设置当前进度
+     * @param progress
+     */
     public void setCurrentProgress(float progress) {
         //属性动画更新进度，刷新界面
         ValueAnimator animator = ValueAnimator.ofFloat(0, progress);
@@ -138,6 +146,10 @@ public class ProgressView extends View {
         animator.start();
     }
 
+    /**
+     * 设置最大进度
+     * @param maxProgress
+     */
     public void setMaxProgress(float maxProgress) {
         this.mMaxProgress = maxProgress;
     }

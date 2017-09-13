@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="ProgressView">
+        <!--轨道颜色 -->
         <attr name="trackColor" format="color" />
+        <!--轨道宽度 -->
         <attr name="trackWidth" format="dimension" />
+        <!--进度条颜色 -->
         <attr name="progressColor" format="color" />
+        <!-- 文字颜色 -->
         <attr name="progressTextColor" format="color" />
+        <!-- 文字大小 -->
         <attr name="progressTextSize" format="dimension" />
     </declare-styleable>
 </resources>

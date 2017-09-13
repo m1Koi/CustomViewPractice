@@ -11,9 +11,9 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_gravity="center"
-        app:progressColor="@color/colorAccent"
-        app:progressTextColor="@color/colorPrimaryDark"
+        app:progressColor="@color/progressColor"
+        app:progressTextColor="@color/progressTextColor"
         app:progressTextSize="30sp"
-        app:trackColor="@color/colorPrimary"
+        app:trackColor="@color/trackColor"
         app:trackWidth="18dp" />
 </FrameLayout>
