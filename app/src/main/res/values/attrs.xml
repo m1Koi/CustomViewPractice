@@ -12,4 +12,16 @@
         <!-- 文字大小 -->
         <attr name="progressTextSize" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="RatingBar">
+        <!--默认星星图片 -->
+        <attr name="normalStar" format="reference" />
+        <!--选中星星图片 -->
+        <attr name="selectStar" format="reference" />
+        <!--星星的总数量 -->
+        <attr name="starNum" format="integer" />
+        <!--星星的间隔 -->
+        <attr name="starPadding" format="dimension" />
+
+    </declare-styleable>
 </resources>

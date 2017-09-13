@@ -1,4 +1,4 @@
-package com.m1Ku.progressview;
+package com.m1Ku.progressview.view;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -12,6 +12,9 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
+
+import com.m1Ku.progressview.R;
+import com.m1Ku.progressview.Utils;
 
 /**
  * Author: m1Ku
