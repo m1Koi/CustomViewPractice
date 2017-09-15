@@ -58,7 +58,9 @@ public class RatingBar extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        //高度设置为 星星的高度
         int height = mNormalStar.getHeight();
+        //宽度设置为 星星总宽度 + 间隔
         int width = mNormalStar.getWidth() * mStarNum + mStarPadding * (mStarNum - 1);
         setMeasuredDimension(width, height);
     }
@@ -70,8 +72,10 @@ public class RatingBar extends View {
         for (int i = 0; i < mStarNum; i++) {
             int x = (mNormalStar.getWidth() + mStarPadding) * i;
             if (mCurrentStarPos > i) {
+                //绘制选中
                 canvas.drawBitmap(mSelectStar, x, 0, mPaint);
             } else {
+                //绘制默认
                 canvas.drawBitmap(mNormalStar, x, 0, mPaint);
             }
         }
@@ -82,7 +86,9 @@ public class RatingBar extends View {
         switch (event.getAction()) {
             case MotionEvent.ACTION_MOVE:
             case MotionEvent.ACTION_DOWN:
+                //触摸位置
                 float dx = event.getX();
+                //计算触摸的级别
                 int currentStarPos = (int) (dx / (mNormalStar.getWidth() + mStarPadding) + 1);
                 if (currentStarPos > mStarNum) {
                     currentStarPos = mStarNum;
@@ -90,17 +96,23 @@ public class RatingBar extends View {
                 if (currentStarPos <= 0) {
                     mCurrentStarPos = 1;
                 }
+                //如果滑动级别未发生变化，return，不重绘
                 if (currentStarPos == mCurrentStarPos) {
                     return true;
                 }
                 mCurrentStarPos = currentStarPos;
                 invalidate();
+                //回调当前选中的级别
                 onRateSelectedListener.onRateSelect(mCurrentStarPos);
                 break;
         }
         return true;
     }
 
+    /**
+     * 初始化级别
+     * @param rate
+     */
     public void setInitRate(int rate) {
         if (rate > mStarNum) {
             throw new RuntimeException("初始化的Rate值要小于最大值" + mStarNum);
