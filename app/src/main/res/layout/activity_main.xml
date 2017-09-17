@@ -22,10 +22,35 @@
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:normalStar="@drawable/star_normal"
         app:selectStar="@drawable/star_selected"
         app:starNum="5"
         app:starPadding="30dp" />
+
+    <TextView
+        android:id="@+id/tv_indicator"
+        android:layout_width="55dp"
+        android:layout_height="75dp"
+        android:layout_gravity="center"
+        android:background="@drawable/roundrect_bg"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="38sp"
+        android:visibility="gone" />
+
+    <com.m1Ku.progressview.view.LetterIndexView
+        android:id="@+id/letterIndexView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:background="@drawable/siderect_bg"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="2dp"
+        app:defaultTextColor="@color/white"
+        app:letterTextSize="14sp"
+        app:selectTextColor="@color/colorPrimary" />
 
 
 </FrameLayout>

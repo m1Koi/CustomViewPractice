@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- 练习1 QQ计步器-->
     <declare-styleable name="ProgressView">
         <!--轨道颜色 -->
         <attr name="trackColor" format="color" />
@@ -13,6 +14,7 @@
         <attr name="progressTextSize" format="dimension" />
     </declare-styleable>
 
+    <!--练习2 RatingBar -->
     <declare-styleable name="RatingBar">
         <!--默认星星图片 -->
         <attr name="normalStar" format="reference" />
@@ -22,6 +24,16 @@
         <attr name="starNum" format="integer" />
         <!--星星的间隔 -->
         <attr name="starPadding" format="dimension" />
-
     </declare-styleable>
+
+    <!--练习3 字母索引条-->
+    <declare-styleable name="LetterIndexView">
+        <!--字母文字颜色-->
+        <attr name="defaultTextColor" format="color"/>
+        <!--选中时字母文字颜色-->
+        <attr name="selectTextColor" format="color"/>
+        <!--字母文字大小-->
+        <attr name="letterTextSize" format="dimension"/>
+    </declare-styleable>
+
 </resources>
