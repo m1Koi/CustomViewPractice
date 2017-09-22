@@ -48,9 +48,16 @@
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:paddingTop="2dp"
+        android:visibility="gone"
         app:defaultTextColor="@color/white"
         app:letterTextSize="14sp"
         app:selectTextColor="@color/colorPrimary" />
+
+    <com.m1Ku.progressview.view.ShapeChangeView
+        android:id="@+id/shapeChangeView"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center" />
 
 
 </FrameLayout>

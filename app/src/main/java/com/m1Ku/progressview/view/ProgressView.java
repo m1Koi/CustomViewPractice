@@ -20,7 +20,7 @@ import com.m1Ku.progressview.Utils;
  * Author: m1Ku
  * Email: howx172@163.com
  * Create Time: 2017/9/11
- * Description:
+ * Description: 仿QQ计步器
  */
 
 public class ProgressView extends View {

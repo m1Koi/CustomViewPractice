@@ -18,7 +18,7 @@ import com.m1Ku.progressview.Utils;
  * Author: m1Ku
  * Email: howx172@163.com
  * Create Time: 2017/9/16
- * Description:
+ * Description: 仿网易云音乐字母索引条
  */
 
 public class LetterIndexView extends View {

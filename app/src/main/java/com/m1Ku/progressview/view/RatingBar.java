@@ -17,7 +17,7 @@ import com.m1Ku.progressview.R;
  * Author: m1Ku
  * Email: howx172@163.com
  * Create Time: 2017/9/13
- * Description:
+ * Description: RatingBar评分条
  */
 
 public class RatingBar extends View {
