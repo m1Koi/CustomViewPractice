@@ -1,18 +1,10 @@
 package com.m1Ku.progressview;
 
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
 
-import com.m1Ku.progressview.view.LetterIndexView;
-import com.m1Ku.progressview.view.ProgressView;
-import com.m1Ku.progressview.view.RatingBar;
-import com.m1Ku.progressview.view.ShapeChangeView;
+import com.m1Ku.progressview.view.view4.ShapeChangeView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -60,25 +52,7 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
         /**仿58同城加载动画测试 **/
-        final ShapeChangeView shapeChangeView = (ShapeChangeView) findViewById(R.id.shapeChangeView);
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true){
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            shapeChangeView.changeShape();
-                        }
-                    });
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
 
-            }
-        }).start();
+
     }
 }

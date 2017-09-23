@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.m1Ku.progressview.MainActivity">
 
-    <com.m1Ku.progressview.view.ProgressView
+    <com.m1Ku.progressview.view.view1.ProgressView
         android:id="@+id/progressView"
         android:layout_width="300dp"
         android:layout_height="300dp"
@@ -18,7 +18,7 @@
         app:trackColor="@color/trackColor"
         app:trackWidth="18dp" />
 
-    <com.m1Ku.progressview.view.RatingBar
+    <com.m1Ku.progressview.view.view2.RatingBar
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
         android:textSize="38sp"
         android:visibility="gone" />
 
-    <com.m1Ku.progressview.view.LetterIndexView
+    <com.m1Ku.progressview.view.view3.LetterIndexView
         android:id="@+id/letterIndexView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -53,10 +53,9 @@
         app:letterTextSize="14sp"
         app:selectTextColor="@color/colorPrimary" />
 
-    <com.m1Ku.progressview.view.ShapeChangeView
-        android:id="@+id/shapeChangeView"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+    <com.m1Ku.progressview.view.view4.LoadingView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="center" />
 
 

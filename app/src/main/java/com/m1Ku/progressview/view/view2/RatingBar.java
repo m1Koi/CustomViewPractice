@@ -1,4 +1,4 @@
-package com.m1Ku.progressview.view;
+package com.m1Ku.progressview.view.view2;
 
 import android.content.Context;
 import android.content.res.TypedArray;
