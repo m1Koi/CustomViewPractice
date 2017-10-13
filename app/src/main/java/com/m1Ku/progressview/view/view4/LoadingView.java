@@ -54,7 +54,7 @@ public class LoadingView extends LinearLayout {
         inflate(getContext(), R.layout.layout_loading_view, this);
         mShapeChangeView = findViewById(R.id.shapeChangeView);
         mShadowView = findViewById(R.id.shadowView);
-
+        //开启动画
         post(new Runnable() {
             @Override
             public void run() {
@@ -83,8 +83,6 @@ public class LoadingView extends LinearLayout {
         translateAnimation.setInterpolator(new AccelerateInterpolator());
         //阴影缩小动画
         ObjectAnimator scaleAnimation = ObjectAnimator.ofFloat(mShadowView, "scaleX", 1f, 0.4f);
-        //旋转动画
-
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.playTogether(translateAnimation, scaleAnimation);
         animatorSet.setDuration(animateTime);
@@ -109,7 +107,6 @@ public class LoadingView extends LinearLayout {
         ObjectAnimator translateAnimation = ObjectAnimator.ofFloat(mShapeChangeView, "translationY", translateDistance, 0);
         //阴影放大的动画
         ObjectAnimator scaleAnimation = ObjectAnimator.ofFloat(mShadowView, "scaleX", 0.4f, 1f);
-
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.playTogether(translateAnimation, scaleAnimation);
         animatorSet.setDuration(animateTime);
@@ -149,7 +146,6 @@ public class LoadingView extends LinearLayout {
         }
         rotateAnimation.setDuration(animateTime);
         rotateAnimation.start();
-
     }
 
     @Override
