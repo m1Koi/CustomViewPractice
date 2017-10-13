@@ -3,10 +3,22 @@ package com.m1Ku.progressview;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.m1Ku.progressview.view.view4.ShapeChangeView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+    private ListView listView;
+    private List<String> mDatas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +65,35 @@ public class MainActivity extends AppCompatActivity {
 
         /**仿58同城加载动画测试 **/
 
+        mDatas = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            mDatas.add("item ->" + i);
+        }
+
+        listView = (ListView) findViewById(R.id.listView);
+        listView.setAdapter(new BaseAdapter() {
+            @Override
+            public int getCount() {
+                return mDatas.size();
+            }
+
+            @Override
+            public Object getItem(int i) {
+                return mDatas.get(i);
+            }
+
+            @Override
+            public long getItemId(int i) {
+                return i;
+            }
+
+            @Override
+            public View getView(int i, View view, ViewGroup viewGroup) {
+                TextView textView = (TextView) LayoutInflater.from(MainActivity.this).inflate(R.layout.item_list,null);
+                textView.setText(mDatas.get(i));
+                return textView;
+            }
+        });
 
     }
 }

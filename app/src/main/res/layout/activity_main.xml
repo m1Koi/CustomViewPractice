@@ -56,7 +56,27 @@
     <com.m1Ku.progressview.view.view4.LoadingView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <com.m1Ku.progressview.view.view5.DragListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:text="bottom" />
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white" />
+
+    </com.m1Ku.progressview.view.view5.DragListView>
 
 
 </FrameLayout>
