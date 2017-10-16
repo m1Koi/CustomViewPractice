@@ -29,11 +29,16 @@
     <!--练习3 字母索引条-->
     <declare-styleable name="LetterIndexView">
         <!--字母文字颜色-->
-        <attr name="defaultTextColor" format="color"/>
+        <attr name="defaultTextColor" format="color" />
         <!--选中时字母文字颜色-->
-        <attr name="selectTextColor" format="color"/>
+        <attr name="selectTextColor" format="color" />
         <!--字母文字大小-->
-        <attr name="letterTextSize" format="dimension"/>
+        <attr name="letterTextSize" format="dimension" />
+    </declare-styleable>
+
+    <!--练习6 酷狗侧滑效果 -->
+    <declare-styleable name="KGSlidingMenu">
+        <attr name="rightMenuMargin" format="dimension" />
     </declare-styleable>
 
 </resources>

@@ -14,7 +14,7 @@ public class Utils {
     /**
      * dp2px
      */
-    public static int dp2px(Context context, float dpValue) {
+    public static int dp2px(Context context, int dpValue) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpValue,
                 context.getResources().getDisplayMetrics());
     }
