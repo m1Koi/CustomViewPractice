@@ -66,10 +66,10 @@ public class DragListView extends FrameLayout {
 
     private ViewDragHelper.Callback mCallBack = new ViewDragHelper.Callback() {
         /**
-         *
+         * 该方法指定可以滑动的view
          * @param child
          * @param pointerId
-         * @return 返回true，表示所有的子view都可以拖动
+         * @return 返回true表示可以滑动
          */
         @Override
         public boolean tryCaptureView(View child, int pointerId) {
@@ -77,11 +77,11 @@ public class DragListView extends FrameLayout {
         }
 
         /**
-         * 拖动方向
+         * 该方法指定垂直方向滑动的范围
          * @param child
          * @param top
          * @param dy
-         * @return
+         * @return 返回值为指定的滑动范围
          */
         @Override
         public int clampViewPositionVertical(View child, int top, int dy) {
@@ -96,6 +96,12 @@ public class DragListView extends FrameLayout {
             return top;
         }
 
+        /**
+         * 该方法在滑动view被释放时回调
+         * @param releasedChild 滑动的view
+         * @param xvel x方向的速率
+         * @param yvel y方向的速率
+         */
         @Override
         public void onViewReleased(View releasedChild, float xvel, float yvel) {
             float top = mDragView.getTop();

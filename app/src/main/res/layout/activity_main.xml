@@ -79,4 +79,16 @@
 
     </com.m1Ku.progressview.view.view5.DragListView>
 
+    <com.m1Ku.progressview.view.view8.LoadingView
+        android:id="@+id/loadingView"
+        android:layout_width="200dp"
+        android:layout_height="200dp">
+
+    </com.m1Ku.progressview.view.view8.LoadingView>
+
+    <Button
+        android:id="@+id/btn"
+        android:text="隐藏"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </FrameLayout>
