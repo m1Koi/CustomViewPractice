@@ -23,4 +23,4 @@
 
 仿58同城加载动画效果
 
- ![loadingView.gif](http://upload-images.jianshu.io/upload_images/4029874-cf153bb995afae08.gif?imageMogr2/auto-orient/strip)
+![loadingView.gif](http://upload-images.jianshu.io/upload_images/4029874-cf153bb995afae08.gif?imageMogr2/auto-orient/strip)
