@@ -14,14 +14,20 @@ public class Utils {
     /**
      * dp2px
      */
-    public static int dp2px(Context context, int dpValue) {
+    public static int dp2px(Context context, float dpValue) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpValue,
                 context.getResources().getDisplayMetrics());
     }
 
-    public static int sp2px(Context context, int sp) {
+    public static int sp2px(Context context, float sp) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp,
                 context.getResources().getDisplayMetrics());
+    }
+
+    public static int px2dp(Context context, float pxValue) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, pxValue,
+                context.getResources().getDisplayMetrics());
+
     }
 
 }
