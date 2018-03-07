@@ -1,6 +1,7 @@
 package com.m1Ku.progressview.view.view9;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -31,6 +32,8 @@ public class MessageBubbleView extends View {
     private float mFixationRadiusMin = 5;
 
     private Paint mPointPaint;
+    //拖动控件的Bitmap
+    private Bitmap mDragBitmap;
 
     public MessageBubbleView(Context context) {
         this(context, null);
@@ -73,10 +76,9 @@ public class MessageBubbleView extends View {
             //画贝塞尔曲线
             canvas.drawPath(bezierPath, mPointPaint);
         }
-
-        if (mFixationRadius > mFixationRadiusMin) {
-
-        }
+        //绘制拖拽的Bitmap
+        canvas.drawBitmap(mDragBitmap, mDragPoint.x - mDragBitmap.getWidth() / 2,
+                mDragPoint.y - mDragBitmap.getHeight() / 2, null);
 
     }
 
@@ -86,8 +88,6 @@ public class MessageBubbleView extends View {
      * @return
      */
     private Path getBezierPath() {
-
-
 
         if (mFixationRadius < mFixationRadiusMin) {
             return null;
@@ -144,7 +144,7 @@ public class MessageBubbleView extends View {
         mDragPoint.x = moveX;
         mDragPoint.y = moveY;
         //重新绘制
-//        invalidate();
+        invalidate();
     }
 
     /**
@@ -156,6 +156,7 @@ public class MessageBubbleView extends View {
     public void initPoint(float x, float y) {
         mFixationPoint = new PointF(x, y);
         mDragPoint = new PointF(x, y);
+        invalidate();
     }
 
     public PointF getControlPoint() {
@@ -169,6 +170,11 @@ public class MessageBubbleView extends View {
     public static void attach(View view, MessageDisappearListener disappearListener) {
         view.setOnTouchListener(new MessageTouchListener(view, view.getContext()));
     }
+
+    public void setDragBitmap(Bitmap bitmap) {
+        mDragBitmap = bitmap;
+    }
+
 
     public interface MessageDisappearListener {
         void onDisappear(View view);
