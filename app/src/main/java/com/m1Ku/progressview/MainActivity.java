@@ -1,33 +1,54 @@
 package com.m1Ku.progressview;
 
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
 
-import com.m1Ku.progressview.view.view4.ShapeChangeView;
-import com.m1Ku.progressview.view.view8.LoadingView;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.m1Ku.progressview.view.view9.BubbleActivity;
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ListView listView;
-    private List<String> mDatas;
+    private ListAdapter adapter;
+
+    private List<String> mDatas = Arrays.asList("自定义view1-QQ计步器",
+            "自定义view2-RatingBar", "自定义view3-字母索引条", "自定义view4-58同城加载动画",
+            "自定义view9-贝塞尔曲线练习");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final Handler handler = new Handler();
+        adapter = new ListAdapter(R.layout.item_customview, mDatas);
+        RecyclerView rvCustomView = findViewById(R.id.rvCustomView);
+        rvCustomView.setAdapter(adapter);
+        rvCustomView.setLayoutManager(new LinearLayoutManager(this));
+        rvCustomView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(this)
+                .color(ContextCompat.getColor(this, R.color.divider_color))
+                .sizeResId(R.dimen.divider_height).build());
+
+        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                String item = mDatas.get(position);
+                if (item.contains("view9")) {
+                    startActivity(new Intent(MainActivity.this, BubbleActivity.class));
+                }
+            }
+        });
+
+
+//        final Handler handler = new Handler();
 
         /**QQ计步器测试 **/
 //        ProgressView progressView = (ProgressView) findViewById(R.id.progressView);
@@ -97,19 +118,19 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-        final LoadingView loadingView = (LoadingView) findViewById(R.id.loadingView);
-        Button button = (Button) findViewById(R.id.btn);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (loadingView.getVisibility()== View.VISIBLE){
-                    loadingView.setVisibility(View.GONE);
-                }else {
-                    loadingView.setVisibility(View.VISIBLE);
-                }
-
-            }
-        });
+//        final LoadingView loadingView = (LoadingView) findViewById(R.id.loadingView);
+//        Button button = (Button) findViewById(R.id.btn);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (loadingView.getVisibility()== View.VISIBLE){
+//                    loadingView.setVisibility(View.GONE);
+//                }else {
+//                    loadingView.setVisibility(View.VISIBLE);
+//                }
+//
+//            }
+//        });
 
     }
 }

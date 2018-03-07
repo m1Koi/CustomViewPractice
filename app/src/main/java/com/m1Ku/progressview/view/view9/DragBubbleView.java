@@ -17,13 +17,12 @@ import com.m1Ku.progressview.Utils;
  * Author: m1Ku
  * Email: howx172@163.com
  * Create Time: 2018/3/6
- * Description:拖拽消失的view
+ * Description:气泡拖拽的View
  */
 
-public class MessageBubbleView extends View {
+public class DragBubbleView extends View {
 
     private PointF mDragPoint, mFixationPoint;
-    //拖拽圆的半径
     private float mDragPointRadius = 15;
     private float mFixationRadius;
     //固定圆的最大半径
@@ -32,16 +31,18 @@ public class MessageBubbleView extends View {
 
     private Paint mPointPaint;
 
-    public MessageBubbleView(Context context) {
+    public DragBubbleView(Context context) {
         this(context, null);
     }
 
-    public MessageBubbleView(Context context, @Nullable AttributeSet attrs) {
+    public DragBubbleView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public MessageBubbleView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public DragBubbleView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        mDragPoint = new PointF();
+        mFixationPoint = new PointF();
         mFixationRadiusMax = Utils.dp2px(context, mFixationRadiusMax);
         mDragPointRadius = Utils.dp2px(context, mDragPointRadius);
         mFixationRadiusMin = Utils.dp2px(context, mFixationRadiusMin);
@@ -50,6 +51,7 @@ public class MessageBubbleView extends View {
 
     private void initPaint() {
         mPointPaint = new Paint();
+        mPointPaint.setStyle(Paint.Style.FILL);
         mPointPaint.setAntiAlias(true);
         mPointPaint.setDither(true);
         mPointPaint.setColor(Color.RED);
@@ -64,20 +66,13 @@ public class MessageBubbleView extends View {
         }
 
         canvas.drawCircle(mDragPoint.x, mDragPoint.y, mDragPointRadius, mPointPaint);
-        double pointDistance = getDistance(mDragPoint, mFixationPoint);
-        mFixationRadius = (float) (mFixationRadiusMax - pointDistance / 14);
-
+        if (mFixationRadius > mFixationRadiusMin) {
+            canvas.drawCircle(mFixationPoint.x, mFixationPoint.y, mFixationRadius, mPointPaint);
+        }
         Path bezierPath = getBezierPath();
         if (bezierPath != null) {
-            canvas.drawCircle(mFixationPoint.x, mFixationPoint.y, mFixationRadius, mPointPaint);
-            //画贝塞尔曲线
             canvas.drawPath(bezierPath, mPointPaint);
         }
-
-        if (mFixationRadius > mFixationRadiusMin) {
-
-        }
-
     }
 
     /**
@@ -87,8 +82,8 @@ public class MessageBubbleView extends View {
      */
     private Path getBezierPath() {
 
-
-
+        double pointDistance = getDistance(mDragPoint, mFixationPoint);
+        mFixationRadius = (float) (mFixationRadiusMax - pointDistance / 14);
         if (mFixationRadius < mFixationRadiusMin) {
             return null;
         }
@@ -134,17 +129,33 @@ public class MessageBubbleView extends View {
         return Math.sqrt((point1.x - point2.x) * (point1.x - point2.x) + (point1.y - point2.y) * (point1.y - point2.y));
     }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                float x = event.getX();
+                float y = event.getY();
+                initPoint(x, y);
+                break;
+            case MotionEvent.ACTION_MOVE:
+                float moveX = event.getX();
+                float moveY = event.getY();
+                updatePoint(moveX, moveY);
+                break;
+        }
+        invalidate();
+        return true;
+    }
+
     /**
      * 更新拖拽的点
      *
      * @param moveX
      * @param moveY
      */
-    public void updatePoint(float moveX, float moveY) {
+    private void updatePoint(float moveX, float moveY) {
         mDragPoint.x = moveX;
         mDragPoint.y = moveY;
-        //重新绘制
-//        invalidate();
     }
 
     /**
@@ -153,25 +164,14 @@ public class MessageBubbleView extends View {
      * @param x
      * @param y
      */
-    public void initPoint(float x, float y) {
-        mFixationPoint = new PointF(x, y);
-        mDragPoint = new PointF(x, y);
+    private void initPoint(float x, float y) {
+        mFixationPoint.x = x;
+        mFixationPoint.y = y;
+        mDragPoint.x = x;
+        mDragPoint.y = y;
     }
 
     public PointF getControlPoint() {
         return new PointF((mDragPoint.x + mFixationPoint.x) / 2, (mDragPoint.y + mFixationPoint.y) / 2);
-    }
-
-    /**
-     * @param view
-     * @param disappearListener
-     */
-    public static void attach(View view, MessageDisappearListener disappearListener) {
-        view.setOnTouchListener(new MessageTouchListener(view, view.getContext()));
-    }
-
-    public interface MessageDisappearListener {
-        void onDisappear(View view);
-
     }
 }

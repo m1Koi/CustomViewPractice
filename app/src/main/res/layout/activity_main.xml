@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.m1Ku.progressview.MainActivity">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvCustomView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <com.m1Ku.progressview.view.view1.ProgressView
         android:id="@+id/progressView"
@@ -88,7 +94,7 @@
 
     <Button
         android:id="@+id/btn"
-        android:text="隐藏"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-</FrameLayout>
+        android:layout_height="wrap_content"
+        android:text="隐藏" />
+</LinearLayout>
